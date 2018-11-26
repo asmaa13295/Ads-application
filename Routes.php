@@ -1,14 +1,22 @@
 <?php
+if($_GET['url'] == 'index.php'){
+Route::set('', function(){
+    Home::CreateView('Home');
+    Home::get_all_ads();
 
-Route::set('index.php', function(){
-    Index::CreateView('Index');
 });
+}
 
-Route::set('AboutUs', function(){
-    AboutUs::CreateView('AboutUs');
-});
+if($_GET['url'] == 'AdDetails.php'){
+    Route::set('AdDetails', function(){
+    Home::CreateView('AdDetails');
+}); 
+}
 
-Route::set('ContactUs', function(){
-    ContactUs::CreateView('ContactUs');
-});
+if($_GET['url'] == 'Edit.php'){
+    Route::set('Edit', function(){
+    Home::CreateView('Edit');
+}); 
+}
+
 ?>
