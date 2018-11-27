@@ -7,12 +7,11 @@
 ?>
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8" />
-    <title>Ads details</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-</head>
+    <head>
+        <meta charset="utf-8" />
+        <title>Details</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
 <body>
     <div class='container'>
         <form method="POST" action='update_ad'>

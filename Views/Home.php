@@ -4,32 +4,31 @@
 ?>
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8" />
-    <title>Ads Home</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-</head>
-<body>
-    <div class='container'>
-        <ul>
-            <?php foreach ($result as $res) {  ?>
-            <li>
-                <a calss='ads-element' href= <?php echo"details?id=".$res['id'];?>>
-                    <img src="../img/yellowpages.jpg" alt='ttttt'>
-                    <p><?php echo $res["description"]; ?></p>
-                </a>
-                <a class ='Edit' href="<?php echo"edit?id=".$res['id'];?>">Edit </a>
-                <a class ='Delete' href="<?php echo"delete?id=".$res['id'];?>">Delete </a>
+    <head>
+        <meta charset="utf-8" />
+        <title>Home</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <div class='container'>
+            <ul>
+                <?php foreach ($result as $res) {  ?>
+                <li>
+                    <a calss='ads-element' href= <?php echo"details?id=".$res['id'];?>>
+                        <img src="../img/yellowpages.jpg" alt='ttttt'>
+                        <p><?php echo $res["description"]; ?></p>
+                    </a>
+                    <a class ='Edit' href="<?php echo"edit?id=".$res['id'];?>">Edit </a>
+                    <a class ='Delete' href="<?php echo"delete?id=".$res['id'];?>">Delete </a>
 
-            </li> 
-            <?php } ?>
-        </ul>
-        <div class='btn'>
-            <a class = 'Add' href="add">Add Advertisment</a>
+                </li> 
+                <?php } ?>
+            </ul>
+            <div class='btn'>
+                <a class = 'Add' href="add">Add Advertisment</a>
+            </div>
         </div>
-    </div>
-</body>
+    </body>
 </html>
 
 <style>
