@@ -1,5 +1,5 @@
 <?php
-  $repository = new Repository();
+  $repository = new App\Classes\Repository();
 ?>
 
 <html>
@@ -10,11 +10,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
       <div class='container'>
-      <form action = "update_ad" method = "POST" enctype = "multipart/form-data">
+      <form action = "add_ad" method = "POST" enctype = "multipart/form-data">
           <h4> Decription</h4>
           <textarea rows="4" cols="50"  name = "desc" > </textarea></br>
           <input class= 'image' type = "file" name = "image" /></br>
-          <input type = "hidden" name = "id" >
           <input type="submit" name="submit" value="Submit"/>
         </form>
       </div>

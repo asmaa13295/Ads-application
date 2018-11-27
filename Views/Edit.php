@@ -1,6 +1,6 @@
 <?php
   $id = $_GET['id'];
-  $repository = new Repository();
+  $repository = new App\Classes\Repository();
   $result = $repository->getAdById($id);
   $description = $result['0']['description'];
   $image = $result['0']['image'];
@@ -18,7 +18,7 @@
           <h4> Decription</h4>
           <textarea rows="4" cols="50"  name = "desc" > <?php echo $description; ?></textarea></br>
           <input class= 'image' type = "file" name = "image" />
-          <?php echo $image; ?></br>
+            <?php echo $image; ?></br>
           <input type = "hidden" name = "id" value = "<?php echo $id; ?>">
           <input class='submit' type="submit" name="submit" value="Submit"/>
         </form>

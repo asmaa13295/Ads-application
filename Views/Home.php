@@ -1,12 +1,19 @@
 <?php
-    $repository = new Repository();
+    $repository = new App\Classes\Repository();
     $result = $repository->getAds();
-    if (!isset($_GET['role'])){
-        $role = 0;
-    }
-    else{
-    $role = $_GET['role'];
-    }
+    $currentUser = App\Classes\CurrentUser::get();
+    $role = $currentUser->role;
+
+    $fb = new Facebook\Facebook([
+      'app_id' => '1460994884003264', // Replace {app-id} with your app id
+      'app_secret' => 'abdc76a5b58eba99c6293e205dfac20d',
+      'default_graph_version' => 'v2.2',
+      ]);
+
+    $helper = $fb->getRedirectLoginHelper();
+
+    $permissions = ['email']; // Optional permissions
+    $loginUrl = $helper->getLoginUrl('https://example.com/fb-callback.php', $permissions);
 ?>
 <!DOCTYPE html>
 <html>
@@ -21,7 +28,7 @@
                 <?php foreach ($result as $res) {  ?>
                 <li>
                     <a calss='ads-element' href= <?php echo"details?id=".$res['id'];?>>
-                        <img src="./img/yellowpages.jpg" alt='ttttt'>
+                    <img src="/../img/yellowpages.jpg" alt ='yello pages pic'>
                         <p><?php echo $res["description"]; ?></p>
                     </a>
                     <?php if($role == 1 || $role == 2){ ?>
@@ -39,6 +46,18 @@
                     <a class = 'Add' href="add">Add Advertisment</a>
                 <?php } ?>
             </div>
+            <div class='btn'>
+                <?php if ($role == 0) { ?>
+                    <a class = 'Add' href="login">admin Login</a>
+                <?php } ?>
+            </div>
+            <div class='btn'>
+                <?php if ($role == 1) { ?>
+                    <a class = 'Add' href="logout">admin Logout</a>
+                <?php } ?>
+            </div>
+
+        <?php echo '<a href="' . htmlspecialchars($loginUrl) . '">Log in with Facebook!</a>'; ?>
         </div>
     </body>
 </html>

@@ -1,11 +1,14 @@
 <?php
+namespace App\Classes;
+
+use PDO;
 
 class Database
 {
-    public static $host = "localhost";
+    public static $host = "database";
     public static $dbName = "ads";
     public static $username = "root";
-    public static $password = "";
+    public static $password = "root";
 
     private static function connect()
     {

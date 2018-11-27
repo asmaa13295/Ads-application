@@ -1,6 +1,6 @@
 <?php
     $id = $_GET['id'];
-    $repository = new Repository();
+    $repository = new App\Classes\Repository();
     $result = $repository->getAdById($id);
     $description = $result['0']['description'];
     $image = $result['0']['image'];
@@ -17,7 +17,7 @@
         <form method="POST" action='update_ad'>
             <div class = 'ad-cont'>
                 <div class = 'ad-img'>
-                    <img src='../img/<?php echo $image ?>' alt ='yello pages pic'>
+                    <img src="<?php echo __DIR__."../img/$image" ?>" alt ='yello pages pic'>
                 </div>
                 <h4 class='ad-desc'> <?php echo $description ?></h4>
             </div>

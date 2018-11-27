@@ -1,4 +1,7 @@
 <?php
+
+namespace App\Classes;
+
 class Route
 {
     public static $validRoutes = array();
