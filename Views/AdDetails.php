@@ -1,7 +1,7 @@
-<?php 
-    $id = $_GET['pk'];
-    $ads = new Home();
-    $result = $ads->get_ad_by_id($id);
+<?php
+    $id = $_GET['id'];
+    $repository = new Repository();
+    $result = $repository->getAdById($id);
     $description = $result['0']['description'];
     $image = $result['0']['image'];
 ?>
@@ -15,14 +15,13 @@
 </head>
 <body>
     <div class='container'>
-        <form method="POST">
+        <form method="POST" action='update_ad'>
             <div class = 'ad-cont'>
                 <div class = 'ad-img'>
-                    <img src='./img/<?php echo $image ?>' alt ='yello pages pic'>
+                    <img src='../img/<?php echo $image ?>' alt ='yello pages pic'>
                 </div>
                 <h4 class='ad-desc'> <?php echo $description ?></h4>
             </div>
-            <input type="submit" name="form_submitted" value="Submit" />
             <div class='comments'>
                 <h4 >Comments</h4>
                 <div class='comment-cont'>

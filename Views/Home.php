@@ -1,6 +1,6 @@
 <?php
-    $ads = new Home();
-    $result = $ads->get_all_ads();
+    $repository = new Repository();
+    $result = $repository->getAds();
 ?>
 <!DOCTYPE html>
 <html>
@@ -15,17 +15,19 @@
         <ul>
             <?php foreach ($result as $res) {  ?>
             <li>
-                <a calss='ads-element' href= <?php echo"AdDetails.php?pk=".$res['id'];?>>
-                    <img src="./img/yellowpages.jpg" alt='ttttt'>
+                <a calss='ads-element' href= <?php echo"details?id=".$res['id'];?>>
+                    <img src="../img/yellowpages.jpg" alt='ttttt'>
                     <p><?php echo $res["description"]; ?></p>
                 </a>
-                <a class ='Edit' href=<?php echo"Edit.php?pk=".$res['id'];?>>Edit </a>
+                <a class ='Edit' href="<?php echo"edit?id=".$res['id'];?>">Edit </a>
+                <a class ='Delete' href="<?php echo"delete?id=".$res['id'];?>">Delete </a>
+
             </li> 
             <?php } ?>
         </ul>
-    </div>
-    <div class='btn'>
-        <a href="Add.php">Add Advertisment</a>
+        <div class='btn'>
+            <a class = 'Add' href="add">Add Advertisment</a>
+        </div>
     </div>
 </body>
 </html>
@@ -35,6 +37,8 @@
     width:80%;
     background-color:#EEE;
     margin: 0 10% 0 10%;
+    min-height: 700px;
+    padding-top: 25px;
 }
 ul{
     list-style: none;
@@ -44,7 +48,7 @@ ul{
     margin: 0;
     padding: 0;
 }
-li{
+li, .Add{
     border-radius: 15px;
     border: 1px solid #357d9e;
     background-color: #e1f3fb;
@@ -63,16 +67,19 @@ a , .ads-element{
     width:100%;
     color: #333;
 }
-.Edit{
+.Edit, .Delete, .Add{
     color: green;
     border: 1px solid green;
     width: 25%;
     background-color: white;
-
+    text-align: center;
 
 }
-.Edit:hover{
+.Edit:hover, .Delete:hover, .Add:hover{
     color: white;
     background-color: green;
+}
+.Add{
+    margin : 3% 35%;
 }
 </style>

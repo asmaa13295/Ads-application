@@ -1,22 +1,109 @@
 <?php
-if($_GET['url'] == 'index.php'){
-Route::set('', function(){
+
+Route::set('index.php', function () {
     Home::CreateView('Home');
-    Home::get_all_ads();
+});
+
+
+Route::set('details', function ()
+{
+    Home::CreateView('AdDetails');
+});
+
+
+Route::set('edit', function ()
+{
+    Home::CreateView('Edit');
+});
+
+
+Route::set('update_ad', function ()
+{
+    if(empty($_POST['desc']))
+    {
+         echo "<font color='red'>description field is empty.</font><br/>";
+
+     }else if(isset($_FILES['image']))
+     {  
+        $errors= array();
+        $file_name = $_FILES['image']['name'];
+        $file_size =$_FILES['image']['size'];
+        $file_tmp =$_FILES['image']['tmp_name'];
+        $file_type=$_FILES['image']['type'];
+        $exploded = explode('.',$_FILES['image']['name']);
+        
+        if($file_size > 2097152){
+            $errors[]='File size must be excately 2 MB';
+        }
+        
+        if(empty($errors)==true){
+            move_uploaded_file($file_tmp,"img/".$file_name);
+            $dec = $_POST['desc'];
+            $id = $_POST['id'];
+
+            $repository = new Repository();
+            $result = $repository->updAd($dec, $file_name, $id);
+            echo '<p>Updated succefully .</p><a href= index.php>Return Home </a>';
+        }else{
+            print_r($errors);
+        }
+    }
 
 });
-}
 
-if($_GET['url'] == 'AdDetails.php'){
-    Route::set('AdDetails', function(){
-    Home::CreateView('AdDetails');
-}); 
-}
+Route::set('add', function ()
+{   
+    Home::CreateView('Add');
+});
 
-if($_GET['url'] == 'Edit.php'){
-    Route::set('Edit', function(){
-    Home::CreateView('Edit');
-}); 
-}
 
-?>
+Route::set('add_ad', function ()
+{
+    if(empty($_POST['desc']))
+    {
+         echo "<font color='red'>description field is empty.</font><br/>";
+
+     }else if(isset($_FILES['image']))
+     {  
+        $errors= array();
+        $file_name = $_FILES['image']['name'];
+        $file_size =$_FILES['image']['size'];
+        $file_tmp =$_FILES['image']['tmp_name'];
+        $file_type=$_FILES['image']['type'];
+        $exploded = explode('.',$_FILES['image']['name']);
+        
+        
+        if($file_size > 2097152){
+            $errors[]='File size must be excately 2 MB';
+        }
+        
+        if(empty($errors)==true){
+            move_uploaded_file($file_tmp,"img/".$file_name);
+            $dec = $_POST['desc'];
+            $id = $_POST['id'];
+
+            $repository = new Repository();
+            $result = $repository->addNew($dec, $file_name, $id);
+            echo '<p>Added succefully .</p><a href= index.php>Return Home </a>';
+        }else{
+            print_r($errors);
+        }
+    }
+
+});
+
+
+Route::set('delete', function ()
+{
+    if($_GET['id']){
+        $id = $_GET['id'];
+        $repository = new Repository();
+        $result = $repository->deleteAd($id);
+        $_GET['url'] = 'index';
+        echo '<p>Deleted succefully .</p><a href= index.php>Return Home </a>';
+    }else{
+            print_r($errors);
+        }
+    
+
+});

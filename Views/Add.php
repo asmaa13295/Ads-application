@@ -1,22 +1,17 @@
+<?php
+  $repository = new Repository();
+?>
 
 <html>
-<head>
-    <title>Add Data</title>
-</head>
- 
-<body>
-  <p>ajgdjsghj</p>
-    <!-- <form action="AdDetails.php" method="post" name="form1">
-        <table width="25%">
-            <tr> 
-                <td>Description</td>
-                <td><input type="text" name="desc"></td>
-            </tr>
-            <tr> 
-                <td>Image</td>
-                <td><input type="text" name="img"></td>
-            </tr>
-        </table>
-    </form> -->
-</body>
+   <body>
+      
+      <form action = "add_ad" method = "POST" enctype = "multipart/form-data">
+         <input type = "file" name = "image" />
+         <input type = "hidden" name = "id" >
+         <input type = "text" name = "desc" />
+         <input type="submit" name="submit" value="Submit"/>
+         
+      </form>
+      
+   </body>
 </html>
