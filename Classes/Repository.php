@@ -27,5 +27,10 @@ class Repository
         return Database::query("delete from advertisement where id = '$id'");
     }
 
+    public static function login($user_name, $password){
+    
+        return Database::query("select * from users where name = '$user_name' and password = '$password'");
+    }
+
     
 }

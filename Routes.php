@@ -4,7 +4,6 @@ Route::set('index.php', function () {
     Home::CreateView('Home');
 });
 
-
 Route::set('details', function ()
 {
     Home::CreateView('AdDetails');
@@ -102,8 +101,33 @@ Route::set('delete', function ()
         $_GET['url'] = 'index';
         echo '<p>Deleted succefully .</p><a href= index.php>Return Home </a>';
     }else{
-            print_r($errors);
+        echo '<p>Error in deletting .</p><a href= index.php>Return Home </a>';
         }
     
 
+});
+
+Route::set('login', function ()
+{
+    Home::CreateView('Login');
+});
+
+Route::set('login_validation', function ()
+{
+    $user_name = $_POST['user_name'];
+    $password = $_POST['password'];
+    $repository = new Repository();
+    $result = $repository->login($user_name, $password);
+    $errors= array();
+    if(empty($result)){
+        $errors[]='please enter valid username and password';
+    }
+    if(empty($errors)){
+        $role = $result[0]['role'];
+       // echo '<a href= index.php>Return Home </a>';
+       //var_dump($_SERVER); 
+        header( 'Location: ' . $_SERVER['SCRIPT_NAME'] .'?role=1' );
+    }
+
+    
 });

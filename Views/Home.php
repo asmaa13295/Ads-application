@@ -1,6 +1,12 @@
 <?php
     $repository = new Repository();
     $result = $repository->getAds();
+    if (!isset($_GET['role'])){
+        $role = 0;
+    }
+    else{
+    $role = $_GET['role'];
+    }
 ?>
 <!DOCTYPE html>
 <html>
@@ -15,17 +21,23 @@
                 <?php foreach ($result as $res) {  ?>
                 <li>
                     <a calss='ads-element' href= <?php echo"details?id=".$res['id'];?>>
-                        <img src="../img/yellowpages.jpg" alt='ttttt'>
+                        <img src="./img/yellowpages.jpg" alt='ttttt'>
                         <p><?php echo $res["description"]; ?></p>
                     </a>
-                    <a class ='Edit' href="<?php echo"edit?id=".$res['id'];?>">Edit </a>
-                    <a class ='Delete' href="<?php echo"delete?id=".$res['id'];?>">Delete </a>
+                    <?php if($role == 1 || $role == 2){ ?>
+                        <a class ='Edit' href="<?php echo"edit?id=".$res['id'];?>">Edit </a>
+                    <?php }?>
+                    <?php if($role == 1 ){ ?>
+                        <a class ='Delete' href="<?php echo"delete?id=".$res['id'];?>">Delete </a>
+                    <?php } ?>
 
                 </li> 
                 <?php } ?>
             </ul>
             <div class='btn'>
-                <a class = 'Add' href="add">Add Advertisment</a>
+                <?php if($role == 1 ){ ?>
+                    <a class = 'Add' href="add">Add Advertisment</a>
+                <?php } ?>
             </div>
         </div>
     </body>
