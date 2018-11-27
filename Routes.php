@@ -124,9 +124,7 @@ Route::set('login_validation', function ()
     }
     if(empty($errors)){
         $role = $result[0]['role'];
-       // echo '<a href= index.php>Return Home </a>';
-       //var_dump($_SERVER); 
-        header( 'Location: ' . $_SERVER['SCRIPT_NAME'] .'?role=1' );
+        header( 'Location: ' . $_SERVER['SCRIPT_NAME'] .'?role='.$role );
     }
 
     

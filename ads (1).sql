@@ -64,8 +64,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `password`, `role`) VALUES
-(1, 'asmaa1', '12345', 1),
-(2, 'asmaa2', '12345', 2);
+(1, 'admin1', '12345', 1),
+(2, 'admin2', '12345', 2);
 
 --
 -- Indexes for dumped tables
