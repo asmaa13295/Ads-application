@@ -28,7 +28,7 @@
                 <?php foreach ($result as $res) {  ?>
                 <li>
                     <a calss='ads-element' href= <?php echo"details?id=".$res['id'];?>>
-                    <img src="/../img/yellowpages.jpg" alt ='yello pages pic'>
+                    <img src="<?php echo "img/{$res['image']}" ?>">
                         <p><?php echo $res["description"]; ?></p>
                     </a>
                     <?php if($role == 1 || $role == 2){ ?>

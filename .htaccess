@@ -1,3 +1,3 @@
 RewriteEngine On
+RewriteRule ^(img)($|/) - [L]
 RewriteRule ^([^/]+)/? index.php?url=$1 [L,QSA]
-RewriteCond %{REQUEST_URI} !^/img/(.+)$

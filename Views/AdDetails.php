@@ -15,11 +15,11 @@
 <body>
     <div class='container'>
         <form method="POST" action='update_ad'>
-            <div class = 'ad-cont'>
-                <div class = 'ad-img'>
-                    <img src="<?php echo __DIR__."../img/$image" ?>" alt ='yello pages pic'>
+            <div class = "ad-cont">
+                <div class = "ad-img">
+                    <img src="<?php echo "img/$image" ?>">
                 </div>
-                <h4 class='ad-desc'> <?php echo $description ?></h4>
+                <h4 class="ad-desc"> <?php echo $description ?></h4>
             </div>
             <div class='comments'>
                 <h4 >Comments</h4>
