@@ -2,6 +2,7 @@
 namespace App\Controllers;
 
 use App\Classes\Repository;
+use App\Classes\CurrentUser;
 
 class Home extends Controller
 {

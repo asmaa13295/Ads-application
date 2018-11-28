@@ -1,5 +1,6 @@
 <?php
 use App\Classes\Route;
+use App\Classes\CurrentUser;
 use App\Controllers\Home;
 
 Route::set('index.php', function () {
