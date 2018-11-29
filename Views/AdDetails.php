@@ -81,4 +81,8 @@ li{
     display: inline-block;
     width: 32%;
 }
+img{
+    width: 150px;
+    height: 150px
+}
 </style>

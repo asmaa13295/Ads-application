@@ -112,4 +112,8 @@ a , .ads-element{
 .Add{
     margin : 3% 35%;
 }
+img{
+    width: 150px;
+    height: 150px
+}
 </style>
